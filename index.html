@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS AI | AI Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>NEXUS AI</h1>
+                </div>
+                <button class="new-chat-btn">
+                    <i class="fas fa-plus"></i> New Chat
+                </button>
+            </div>
+            
+            <div class="chat-history">
+                <h3><i class="fas fa-history"></i> History</h3>
+                <ul id="chatHistory">
+                    <li class="history-item active">Today's Conversation</li>
+                    <li class="history-item">Python Learning</li>
+                    <li class="history-item">Project Ideas</li>
+                    <li class="history-item">AI Research</li>
+                </ul>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">U</div>
+                <div class="user-info">
+                    <strong>User Account</strong>
+                    <span>Free Plan</span>
+                </div>
+                <button class="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <h2>AI Chat Assistant</h2>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i> Dark
+                    </button>
+                    <button class="clear-chat" id="clearChat">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+            </header>
+
+            <div class="messages-container" id="messagesContainer">
+                <!-- Welcome Message -->
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <h3>Hello! I'm your Nexus AI assistant. How can I help you today?</h3>
+                        <p class="message-timestamp">Just now</p>
+                    </div>
+                </div>
+
+                <!-- Example User Message -->
+                <div class="message user-message">
+                    <div class="message-content">
+                        <p>Can you explain quantum computing in simple terms?</p>
+                        <p class="message-timestamp">2 minutes ago</p>
+                    </div>
+                    <div class="message-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <!-- Example AI Response -->
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Quantum computing uses quantum bits (qubits) that can be both 0 and 1 at the same time (superposition). This allows quantum computers to solve certain problems much faster than classical computers.</p>
+                        <div class="message-actions">
+                            <button class="action-btn"><i class="fas fa-copy"></i> Copy</button>
+                            <button class="action-btn"><i class="fas fa-thumbs-up"></i> Like</button>
+                            <button class="action-btn"><i class="fas fa-thumbs-down"></i> Dislike</button>
+                        </div>
+                        <p class="message-timestamp">1 minute ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask me anything..."
+                        rows="1"
+                        autofocus
+                    ></textarea>
+                    <div class="input-actions">
+                        <button class="action-btn" title="Attach file">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <button class="action-btn" id="voiceBtn" title="Voice input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="quick-prompts">
+                    <p class="prompts-title">Try:</p>
+                    <div class="prompts-container">
+                        <button class="prompt-btn" data-prompt="Explain quantum computing">
+                            "Explain quantum computing"
+                        </button>
+                        <button class="prompt-btn" data-prompt="Write a Python function to calculate factorial">
+                            "Write a Python function"
+                        </button>
+                        <button class="prompt-btn" data-prompt="Create an image of a robot in futuristic city">
+                            "Create an image of a robot"
+                        </button>
+                        <button class="prompt-btn" data-prompt="What is machine learning?">
+                            "What is machine learning?"
+                        </button>
+                    </div>
+                </div>
+                
+                <p class="disclaimer">
+                    <i class="fas fa-info-circle"></i>
+                    Nexus AI may produce inaccurate information. Use discretion.
+                </p>
+            </div>
+        </main>
+
+        <!-- Tools Sidebar -->
+        <aside class="tools-sidebar">
+            <h3><i class="fas fa-tools"></i> AI Tools</h3>
+            
+            <div class="tool-category">
+                <h4>Conversation</h4>
+                <button class="tool-btn active">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>AI Chat</span>
+                </button>
+                <button class="tool-btn">
+                    <i class="fas fa-microphone"></i>
+                    <span>Voice Chat</span>
+                </button>
+            </div>
+            
+            <div class="tool-category">
+                <h4>Creation</h4>
+                <button class="tool-btn">
+                    <i class="fas fa-image"></i>
+                    <span>Image Generator</span>
+                </button>
+                <button class="tool-btn">
+                    <i class="fas fa-code"></i>
+                    <span>Code Assistant</span>
+                </button>
+                <button class="tool-btn">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Content Writer</span>
+                </button>
+            </div>
+            
+            <div class="tool-category">
+                <h4>Analysis</h4>
+                <button class="tool-btn">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Data Analysis</span>
+                </button>
+                <button class="tool-btn">
+                    <i class="fas fa-search"></i>
+                    <span>Web Search</span>
+                </button>
+            </div>
+            
+            <div class="usage-stats">
+                <h4><i class="fas fa-chart-line"></i> Usage Today</h4>
+                <div class="stat-item">
+                    <span>Messages</span>
+                    <strong>24</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Tokens Used</span>
+                    <strong>1,842</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Images</span>
+                    <strong>3</strong>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
